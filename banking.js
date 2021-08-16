@@ -6,16 +6,18 @@ depositeCall.addEventListener('click', function () {
     const depositeAmount = document.getElementById('deposite-amount');
 
     const depositeMoney = parseFloat(depositeAmount.innerText);
-    const newDepositeAmount = parseFloat(depositeInput.value) + depositeMoney;
+    const depositeInputAmount = parseFloat(depositeInput.value);
+
     const acountBalance = document.getElementById('acount-balance');
-    if (newDepositeAmount > 0) {
+    if (parseFloat(depositeInput.value) > 0) {
+        const newDepositeAmount = depositeInputAmount + depositeMoney;
         depositeAmount.innerText = newDepositeAmount;
 
         depositeInput.value = '';
 
 
 
-        acountBalance.innerText = newDepositeAmount + parseFloat(acountBalance.innerText);
+        acountBalance.innerText = depositeInputAmount + parseFloat(acountBalance.innerText);
     }
 
     else {
@@ -32,14 +34,14 @@ withdrawCall.addEventListener('click', function () {
     const withdrawAmount = document.getElementById('withdraw-amount');
 
     const withdrawMoney = parseFloat(withdrawAmount.innerText);
-    const newWithdrawInput = withdrawInput.value;
-    const newWithdrawAmount = parseFloat(withdrawInput.value) + withdrawMoney;
+    const newWithdrawInput = parseFloat(withdrawInput.value);
+    const newWithdrawAmount = newWithdrawInput + withdrawMoney;
 
 
 
     const totalAcountBalance = document.getElementById('acount-balance');
-    const totalBalance = parseFloat(totalAcountBalance.innerText) - newWithdrawAmount;
-    if (totalBalance > 0 && totalBalance > newWithdrawAmount) {
+    const totalBalance = parseFloat(totalAcountBalance.innerText) - newWithdrawInput;
+    if (totalBalance > 0) {
         withdrawAmount.innerText = newWithdrawAmount;
 
         withdrawInput.value = '';
